@@ -5,9 +5,12 @@ using Muks.DataBind;
 
 public class TestScene : MonoBehaviour
 {
+    [SerializeField] private Sprite _sprite;
+
     void Start()
     {
         DataBind.SetTextValue("Test", "Hi");
+        DataBind.SetSpriteValue("Tests", _sprite);
     }
 
 }

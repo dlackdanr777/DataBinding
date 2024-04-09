@@ -40,7 +40,7 @@ namespace Muks.DataBind
             {
                 textData = new BindData<T>();
                 _dataContainerDic.Add(bindId, textData);
-                UnityEngine.Debug.LogWarning("bindData not exist");
+                //UnityEngine.Debug.LogWarning("bindData not exist");
                 return textData;
             }
 
