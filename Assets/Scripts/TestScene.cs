@@ -11,6 +11,11 @@ public class TestScene : MonoBehaviour
     {
         DataBind.SetTextValue("Test", "Hi");
         DataBind.SetSpriteValue("Tests", _sprite);
+        DataBind.SetUnityActionValue("Test", OnButtonClicked);
     }
 
+    private void OnButtonClicked()
+    {
+        Debug.Log("Test");
+    }
 }
