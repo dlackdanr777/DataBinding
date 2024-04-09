@@ -8,52 +8,41 @@ namespace Muks.DataBind
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextMeshProGetter : MonoBehaviour
     {
-        [SerializeField] private string _dataID;
-        private TextMeshProUGUI _text;
+        [SerializeField] private string _bindId;
+
         private BindData<string> _data;
+        private TextMeshProUGUI _text;
+
 
         private void Awake()
         {
-            if (!TryGetComponent(out _text))
+            if (string.IsNullOrEmpty(_bindId))
             {
-                Debug.LogErrorFormat("{0}에 연결될 컴포넌트가 존재하지 않습니다.", gameObject.name);
-                return;
+                Debug.LogErrorFormat("Invalid text data ID. {0}", gameObject.name);
+                enabled = false;
             }
 
-            if (string.IsNullOrEmpty(_dataID))
-            {
-                Debug.LogWarningFormat("Invalid text data ID. {0}", gameObject.name);
-                _dataID = gameObject.name;
-            }
+            _text = GetComponent<TextMeshProUGUI>();
+            _data = DataBind.GetTextBindData(_bindId);
+            _data.CallBack += UpdateText;
+
         }
+
+
         private void OnEnable()
         {
-            Invoke("Enabled", 0.02f);
+            _text.text = _data.Item;
         }
 
-        private void OnDisable()
+
+        private void UpdateText(string text)
         {
-            Invoke("Disabled", 0.02f);
+            if (enabled)
+                _text.text = text;
         }
+
 
         private void OnDestroy()
-        {
-            Disabled();
-        }
-
-        public void UpdateText(string text)
-        {
-            _text.text = text;
-        }
-
-        private void Enabled()
-        {
-            _data = DataBind.GetTextValue(_dataID);
-            _text.text = _data.Item;
-            _data.CallBack += UpdateText;
-        }
-
-        private void Disabled()
         {
             if (_data == null)
                 return;
