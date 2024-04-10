@@ -8,7 +8,7 @@ namespace Muks.DataBind
     [RequireComponent(typeof(Button))]
     public class ButtonGetter : MonoBehaviour
     {
-        [SerializeField] private string _dataID;
+        [SerializeField] private string _bindId;
 
         private BindData<UnityAction> _data;
         private Button _button;
@@ -17,15 +17,16 @@ namespace Muks.DataBind
 
         private void Awake()
         {
-            if (string.IsNullOrEmpty(_dataID))
+            if (string.IsNullOrEmpty(_bindId))
             {
                 Debug.LogWarningFormat("Invalid text data ID. {0}", gameObject.name);
                 enabled = false;
             }
 
             _button = GetComponent<Button>();
-            _data = DataBind.GetUnityActionBindData(_dataID);
+            _data = DataBind.GetUnityActionBindData(_bindId);
             _data.CallBack += UpdateAction;
+            gameObject.SetActive(false);
         }
 
 
@@ -66,7 +67,7 @@ namespace Muks.DataBind
             _button = null;
         }
 
-
+/*
         private int GetListenerNum()
         {
             FieldInfo field = typeof(UnityEventBase).GetField("m_Calls", BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.DeclaredOnly);
@@ -74,5 +75,6 @@ namespace Muks.DataBind
             PropertyInfo property = invokeCallList.GetType().GetProperty("Count");
             return (int)property.GetValue(invokeCallList);
         }
+*/
     }
 }

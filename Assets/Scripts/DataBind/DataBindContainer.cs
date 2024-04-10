@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Muks.DataBind 
 {
-    /// <summary> 바인딩된 클래스를 저장, 불러오기를 할 수 있는 컨테이너 </summary>
+    /// <summary> BindData 클래스를 저장,불러오기를 하는 클래스 </summary>
     public class DataBindContainer<T>
     {
 

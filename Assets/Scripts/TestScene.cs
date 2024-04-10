@@ -19,11 +19,13 @@ public class TestScene : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
+            Debug.Log("Change Func1");
             DataBind.SetUnityActionValue("Test", OnButtonClicked1);
         }
 
         else if (Input.GetKeyDown(KeyCode.B))
         {
+            Debug.Log("Change Func2");
             DataBind.SetUnityActionValue("Test", OnButtonClicked2);
         }
     }
@@ -31,11 +33,11 @@ public class TestScene : MonoBehaviour
 
     private void OnButtonClicked1()
     {
-        Debug.Log("Test1");
+        Debug.Log("Button Click Test1");
     }
 
     private void OnButtonClicked2()
     {
-        Debug.Log("Test2");
+        Debug.Log("Button Click Test2");
     }
 }
