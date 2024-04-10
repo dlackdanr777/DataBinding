@@ -42,10 +42,9 @@ namespace Muks.DataBind
 
         private void OnDestroy()
         {
-            if (_data == null)
-                return;
-
             _data.CallBack -= UpdateText;
+            _data = null;
+            _text = null;
         }
     }
 }

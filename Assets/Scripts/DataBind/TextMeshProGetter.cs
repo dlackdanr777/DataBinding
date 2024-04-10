@@ -1,10 +1,9 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-
 
 namespace Muks.DataBind
 {
+
     [RequireComponent(typeof(TextMeshProUGUI))]
     public class TextMeshProGetter : MonoBehaviour
     {
@@ -44,10 +43,9 @@ namespace Muks.DataBind
 
         private void OnDestroy()
         {
-            if (_data == null)
-                return;
-
             _data.CallBack -= UpdateText;
+            _data = null;
+            _text = null;
         }
     }
 }

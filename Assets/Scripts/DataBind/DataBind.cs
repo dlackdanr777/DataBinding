@@ -4,7 +4,7 @@ using UnityEngine.Events;
 
 namespace Muks.DataBind
 {
-    /// <summary> 다양한 데이터를 저장 및 불러올 수 있는 정적 클래스 </summary>
+    /// <summary> 다양한 데이터를 id값으로 묶어 전달하는 클래스 </summary>
     public static class DataBind
     {
         private static DataBindContainer<string> _textBindDic = new DataBindContainer<string>();

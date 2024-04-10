@@ -36,6 +36,8 @@ namespace Muks.DataBind
         private void OnDestroy()
         {
             _data.CallBack -= UpdateSprite;
+            _image = null;
+            _data = null;
         }
 
 

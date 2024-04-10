@@ -61,6 +61,9 @@ namespace Muks.DataBind
         private void OnDestroy()
         {
             _data.CallBack -= UpdateAction;
+            _data = null;
+            _action = null;
+            _button = null;
         }
 
 
