@@ -26,7 +26,6 @@ namespace Muks.DataBind
             _button = GetComponent<Button>();
             _data = DataBind.GetUnityActionBindData(_bindId);
             _data.CallBack += UpdateAction;
-            gameObject.SetActive(false);
         }
 
 
